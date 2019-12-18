@@ -6,7 +6,7 @@ import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
 
 import { getRouteChangeEffect } from '../../utils'
 
-const createEditStrategy = (props) => {
+const CreateEditStrategy = (props) => {
   useEffect(() => { isLoggedIn && props.history.push('/dashboard') })
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   const { strategyName, strategyClass, isLoggedIn } = props
@@ -69,4 +69,4 @@ const mapdispatchtoprops = {
   showError: SnackbarAction.show,
   onRouteChange: AppAction.onRouteChange
 }
-export default connect(mapStateToProps, mapdispatchtoprops)(createEditStrategy)
+export default connect(mapStateToProps, mapdispatchtoprops)(CreateEditStrategy)
