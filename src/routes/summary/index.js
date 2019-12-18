@@ -24,6 +24,24 @@ const summaryList = [{
     COGS: 200,
     recoveryRate: 200
   }
+}, {
+  strategyInput: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  forecastResults: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
 }]
 const RenderSummaryItem = ({ summaryList }) => {
   return summaryList.map((item, index) => {
@@ -35,7 +53,7 @@ const RenderSummaryItem = ({ summaryList }) => {
     )
   })
 }
-const summary = props => {
+const Summary = props => {
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   const { summaryList } = props
   return (
@@ -52,4 +70,4 @@ const mapStateToProps = ({ appStore: { isLoggedIn } }) => ({ summaryList, isLogg
 const mapdispatchtoprops = {
   getSummary: summaryAction.getSummary
 }
-export default connect(mapStateToProps, mapdispatchtoprops)(summary)
+export default connect(mapStateToProps, mapdispatchtoprops)(Summary)
