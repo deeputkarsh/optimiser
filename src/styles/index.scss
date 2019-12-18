@@ -56,11 +56,31 @@ html, body{
     width: 75%;
     @include md{ width: 100%};
 }
-
-.main-wrapper .form-control {
-    margin-bottom: 16px;
-    width: 100%;
+.summary-container{
+    padding: 12px;
+    width: 75%;
+    line-height: 34px;
+    @include md{ width: 100%};
 }
+.summary-item{
+    padding: 12px 24px 0px 24px;
+}
+.main-wrapper {
+    .form-control {
+        margin-bottom: 16px;
+        width: 100%;
+    }
+    .summary-header{
+        font-weight: 500;
+        background-color: #efefef;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        width: calc(100% + 20px);
+    }
+}
+
 .result-container{
     max-width: 300px;
     padding: 10px;

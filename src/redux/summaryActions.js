@@ -6,7 +6,6 @@ const defaultState = []
 const { getSummary } = createActions({
   GET_SUMMARY: async _ => {
     const response = await optimiserAPI.getSummaryList()
-    console.log(response.data)
     return response.data
   }
 }, { prefix: 'SUMMARY' })

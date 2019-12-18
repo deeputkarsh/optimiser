@@ -9,24 +9,27 @@ import ForcastResults from './forcast_results'
 const RenderSummaryItem = ({ summaryList }) => {
   return summaryList.map((item, index) => {
     return (
-      <Paper key={index}>
-        <StrategyInput data={item.strategyInput} />
-        <ForcastResults data={item.forecastResults} />
-      </Paper>
+      <Grid key={index} item xs={12} sm={6} lg={4} >
+        <Paper className='summary-item'>
+          <StrategyInput data={item.strategyInput} />
+          <ForcastResults data={item.forecastResults} />
+        </Paper>
+      </Grid>
     )
   })
 }
 const Summary = props => {
-  const { summaryList, isLoggedIn } = props
-  useEffect(getLogoutEffect(props.history, props.isLoggedIn), [isLoggedIn])
-  useEffect(() => { isLoggedIn && props.getSummary() }, ['isLoggedIn'])
-  useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
+  const { summaryList, isLoggedIn, history, getSummary, onRouteChange } = props
+  useEffect(getLogoutEffect(history, isLoggedIn), [isLoggedIn])
+  useEffect(() => { isLoggedIn && getSummary() }, [isLoggedIn, getSummary])
+  useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
-    <Grid container justify='center' spacing={3}>
-      <Grid item xs={12}>
+    <div className='summary-container'>
+      <Grid container spacing={2} wrap='wrap'>
         <RenderSummaryItem summaryList={summaryList} />
+
       </Grid>
-    </Grid>
+    </div>
   )
 }
 
