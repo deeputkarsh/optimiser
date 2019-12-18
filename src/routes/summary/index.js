@@ -2,47 +2,10 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Paper } from '@material-ui/core'
 import { summaryAction } from '../../redux'
-import { getRouteChangeEffect } from '../../utils'
+import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
 import StrategyInput from './strategy_input'
 import ForcastResults from './forcast_results'
 
-const summaryList = [{
-  strategyInput: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  forecastResults: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}, {
-  strategyInput: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  forecastResults: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}]
 const RenderSummaryItem = ({ summaryList }) => {
   return summaryList.map((item, index) => {
     return (
@@ -54,8 +17,10 @@ const RenderSummaryItem = ({ summaryList }) => {
   })
 }
 const Summary = props => {
+  const { summaryList, isLoggedIn } = props
+  useEffect(getLogoutEffect(props.history, props.isLoggedIn), [isLoggedIn])
+  useEffect(() => { isLoggedIn && props.getSummary() }, ['isLoggedIn'])
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
-  const { summaryList } = props
   return (
     <Grid container justify='center' spacing={3}>
       <Grid item xs={12}>
@@ -65,9 +30,6 @@ const Summary = props => {
   )
 }
 
-const mapStateToProps = ({ appStore: { isLoggedIn } }) => ({ summaryList, isLoggedIn })
+const mapStateToProps = ({ summaryList, appStore: { isLoggedIn } }) => ({ summaryList, isLoggedIn })
 
-const mapdispatchtoprops = {
-  getSummary: summaryAction.getSummary
-}
-export default connect(mapStateToProps, mapdispatchtoprops)(Summary)
+export default connect(mapStateToProps, summaryAction)(Summary)

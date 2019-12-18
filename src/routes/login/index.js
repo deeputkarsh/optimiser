@@ -7,7 +7,7 @@ import { LoginAction, AppAction, SnackbarAction } from '../../redux'
 import { getRouteChangeEffect } from '../../utils'
 
 const Login = (props) => {
-  useEffect(() => { isLoggedIn && props.history.push('/dashboard') })
+  useEffect(() => { isLoggedIn && props.history.push('/summary') })
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   const { mobile, password, isLoggedIn } = props
 
