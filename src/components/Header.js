@@ -27,8 +27,8 @@ export const Header = ({ login }) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}><Link className='link' to={`/create_strategy`}>Create Strategy</Link></MenuItem>
-          <MenuItem onClick={handleClose}><Link className='link' to={`/`}>Speech To Text</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link className='link' to='/create_strategy'>Create Strategy</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link className='link' to='/'>Speech To Text</Link></MenuItem>
         </Menu>
       </div>
     </header>

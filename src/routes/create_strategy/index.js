@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { TextField, FormControl, Button } from '@material-ui/core'
+import { TextField, FormControl, Button, InputLabel, Select, MenuItem } from '@material-ui/core'
 
 import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
 
@@ -9,7 +9,7 @@ import { getRouteChangeEffect } from '../../utils'
 const CreateEditStrategy = (props) => {
   useEffect(() => { isLoggedIn && props.history.push('/dashboard') })
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
-  const { strategyName, strategyClass, isLoggedIn } = props
+  const { strategyName, strategyClass, strategyWOS, strategyConstraint, isLoggedIn } = props
 
   const onInputChange = ({ target: { value } }, fieldName) => {
     props.onInputChange({ [fieldName]: value })
@@ -19,7 +19,7 @@ const CreateEditStrategy = (props) => {
     if (strategyName.length <= 0 || strategyClass.length <= 0) {
       return props.showError('Enter valid mobile & password')
     }
-    props.update({ strategyName, strategyClass })
+    props.update({ strategyName, strategyClass, strategyWOS })
   }
 
   return (
@@ -39,17 +39,49 @@ const CreateEditStrategy = (props) => {
               onChange={e => onInputChange(e, 'strategyName')}
             />
           </FormControl>
-          <FormControl style={{ width: '100%' }}>
-            <TextField
-              name='class'
-              label='Class'
-              variant='outlined'
-              type='number'
-              placeholder='Select a class'
-              className='{styles.loginInput}'
-              required
+          <FormControl variant='outlined' className='' style={{ width: '100%' }}>
+            <InputLabel id='demo-simple-select-outlined-label'>
+              Class
+            </InputLabel>
+            <Select
+              labelId='demo-simple-select-outlined-label'
+              id='demo-simple-select-outlined'
               value={strategyClass}
               onChange={e => onInputChange(e, 'strategyClass')}
+              labelWidth={24}
+            >
+              <MenuItem value={140}>140</MenuItem>
+              <MenuItem value={20}>10</MenuItem>
+              <MenuItem value={30}>11</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl style={{ width: '100%' }}>
+            <TextField
+              name='strategy name'
+              label='Class Weeks Of Supply'
+              variant='outlined'
+              type='text'
+              placeholder='Weeks Of Supply'
+              className='{styles.loginInput}'
+              required
+              value={strategyWOS}
+              onChange={e => onInputChange(e, 'strategyWOS')}
+            />
+          </FormControl>
+          <Constraint>
+            
+          </Constraint>
+          <FormControl style={{ width: '100%' }}>
+            <TextField
+              name='strategy constraint'
+              label='Constraint'
+              variant='outlined'
+              type='text'
+              placeholder='Max Discount %'
+              className='{styles.loginInput}'
+              required
+              value={strategyConstraint}
+              onChange={e => onInputChange(e, 'strategyConstraint')}
             />
           </FormControl>
         </form>

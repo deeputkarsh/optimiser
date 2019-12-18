@@ -2,7 +2,7 @@ import { createActions, handleActions, combineActions } from 'redux-actions'
 import { SnackbarAction } from './snackbarActions'
 import { optimiserAPI } from '../services'
 
-const defaultState = { mobile: '', name: '', email: '' }
+const defaultState = { strategyName: '', strategyClass: '140', strategyWOS: '5', strategyConstraints: [{ type: '', value: '' }] }
 
 const update = data => dispatch => {
   dispatch(updateStrategy(data)).then(({ payload }) => {
@@ -13,7 +13,7 @@ const update = data => dispatch => {
     dispatch(SnackbarAction.show(response.data.error))
   })
 }
-const { updateStrategy, getStrategy, onInputChange } = createActions({
+const { updateStrategy, getStrategy, addStrategy, onInputChange } = createActions({
   UPDATE_STRATEGY: async (form) => {
     const response = await optimiserAPI.updateStrategy(form)
     console.log(response)
@@ -22,8 +22,12 @@ const { updateStrategy, getStrategy, onInputChange } = createActions({
   GET_STRATEGY: async (id) => {
     const response = await optimiserAPI.getStrategyData(id)
     return response.data
+  },
+  ADD_STRATEGY: (strategyConstraints) => {
+    strategyConstraints.push({ type: '', value: '' })
+    return { strategyConstraints }
   }
 }, 'ON_INPUT_CHANGE', { prefix: 'STRATEGY' })
-export const CreateStrategyAction = { update, getStrategy, onInputChange }
+export const CreateStrategyAction = { update, addStrategy, getStrategy, onInputChange }
 
 export default handleActions({ [combineActions(onInputChange)]: (state, { payload }) => ({ ...state, ...payload }) }, defaultState)
