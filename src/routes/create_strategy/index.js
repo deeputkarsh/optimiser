@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { TextField, FormControl, Button, InputLabel, Select, MenuItem } from '@material-ui/core'
 
 import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
-
-import { getRouteChangeEffect } from '../../utils'
+import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
+import Constraints from './constraints'
 
 const CreateEditStrategy = (props) => {
-  useEffect(() => { isLoggedIn && props.history.push('/dashboard') })
+  const { strategyName, strategyClass, strategyWOS, strategyConstraints, isLoggedIn } = props
+  useEffect(getLogoutEffect(props.history, props.isLoggedIn), [isLoggedIn])
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
-  const { strategyName, strategyClass, strategyWOS, strategyConstraint, isLoggedIn } = props
 
   const onInputChange = ({ target: { value } }, fieldName) => {
     props.onInputChange({ [fieldName]: value })
@@ -68,22 +68,11 @@ const CreateEditStrategy = (props) => {
               onChange={e => onInputChange(e, 'strategyWOS')}
             />
           </FormControl>
-          <Constraint>
-            
-          </Constraint>
-          <FormControl style={{ width: '100%' }}>
-            <TextField
-              name='strategy constraint'
-              label='Constraint'
-              variant='outlined'
-              type='text'
-              placeholder='Max Discount %'
-              className='{styles.loginInput}'
-              required
-              value={strategyConstraint}
-              onChange={e => onInputChange(e, 'strategyConstraint')}
-            />
-          </FormControl>
+          <Constraints
+            strategyConstraints={strategyConstraints}
+            onInputChange={props.onInputChange}
+            addConstraint={props.addConstraint}
+          />
         </form>
         <Button color='primary' size='large' variant='contained' className='{styles.loginArrow}' onClick={onSaveClick}> Save </Button>
       </div>
@@ -93,11 +82,8 @@ const CreateEditStrategy = (props) => {
 
 const mapStateToProps = ({ strategyData, appStore: { isLoggedIn } }) => ({ ...strategyData, isLoggedIn })
 
-const { update, getStrategy, onInputChange } = CreateStrategyAction
 const mapdispatchtoprops = {
-  update,
-  getStrategy,
-  onInputChange,
+  ...CreateStrategyAction,
   showError: SnackbarAction.show,
   onRouteChange: AppAction.onRouteChange
 }

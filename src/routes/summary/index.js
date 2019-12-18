@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Paper } from '@material-ui/core'
-import { summaryAction } from '../../redux'
+import { summaryAction, AppAction } from '../../redux'
 import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
 import StrategyInput from './strategy_input'
 import ForcastResults from './forcast_results'
@@ -32,4 +32,4 @@ const Summary = props => {
 
 const mapStateToProps = ({ summaryList, appStore: { isLoggedIn } }) => ({ summaryList, isLoggedIn })
 
-export default connect(mapStateToProps, summaryAction)(Summary)
+export default connect(mapStateToProps, { ...summaryAction, onRouteChange: AppAction.onRouteChange })(Summary)
