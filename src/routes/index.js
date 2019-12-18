@@ -6,7 +6,6 @@ import { Snackbar } from '@material-ui/core'
 import { SnackbarAction } from '../redux'
 import { Header } from '../components'
 
-import styles from '../styles/index.scss'
 import Login from './login'
 import NotFound from './not_found'
 import CreateStrategy from './create_strategy'
@@ -16,7 +15,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Header />
-      <div className={styles.mainWrapper}>
+      <div className='main-wrapper'>
         <Switch>
           <Route exact path='/' component={Login} />
           <Route exact path='/404' component={NotFound} />
@@ -48,10 +47,4 @@ function mapStateToProps ({ snackbarStore }) {
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    handleSnackbarClose: () => dispatch(SnackbarAction.hide())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, { handleSnackbarClose: SnackbarAction.hide })(App)

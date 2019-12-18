@@ -4,11 +4,10 @@ import { TextField, FormControl, Button } from '@material-ui/core'
 
 import { LoginAction, AppAction, SnackbarAction } from '../../redux'
 
-import styles from '../../styles/index.scss'
 import { getRouteChangeEffect } from '../../utils'
 
 const Login = (props) => {
-  useEffect(() => { isLoggedIn && props.history.push('/dashboard') })
+  useEffect(() => { isLoggedIn && props.history.push('/summary') })
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   const { mobile, password, isLoggedIn } = props
 
@@ -25,9 +24,9 @@ const Login = (props) => {
   const onPasswordEnter = event => (event.keyCode === 13) && props.login({ mobile, password })
 
   return (
-    <div className={styles.loginInnerWrapper}>
-      <div className={styles.loginContent}>
-        <form className={styles.loginForm}>
+    <div className='login-inner-wrapper'>
+      <div className='login-content'>
+        <form className='login-form'>
           <FormControl style={{ width: '100%' }}>
             <TextField
               name='mobile'
@@ -35,7 +34,7 @@ const Login = (props) => {
               variant='outlined'
               type='text'
               placeholder='Mobile'
-              className={styles.loginInput}
+              className='login-input'
               required
               value={mobile}
               onChange={e => onInputChange(e, 'mobile')}
@@ -48,7 +47,7 @@ const Login = (props) => {
               variant='outlined'
               type='password'
               placeholder='Password'
-              className={styles.loginInput}
+              className='login-input'
               required
               value={password}
               onChange={e => onInputChange(e, 'password')}
@@ -56,7 +55,13 @@ const Login = (props) => {
             />
           </FormControl>
         </form>
-        <Button color='primary' size='large' variant='contained' className={styles.loginArrow} onClick={onLoginClick}> Login </Button>
+        <Button
+          color='primary'
+          size='large'
+          variant='contained'
+          className='login-arrow'
+          onClick={onLoginClick}
+        > Login </Button>
       </div>
     </div>
   )

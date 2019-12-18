@@ -12,8 +12,9 @@ const USER_API = {
 export const optimiserAPI = {
 
   login (credentials) {
-    const Authorization = `Basic ${credentials}`
-    return Axios.get(USER_API.LOGIN, { headers: { Authorization } })
+    return { data: { token: 'psadadj', message: 'Logged In Successfully' } }
+    // const Authorization = `Basic ${credentials}`
+    // return Axios.get(USER_API.LOGIN, { headers: { Authorization } })
   },
 
   getStrategyData () {
@@ -21,7 +22,8 @@ export const optimiserAPI = {
   },
 
   getSummaryList () {
-    return Axios.get(USER_API.SIGNUP, { headers: { setBearerAuth: true } })
+    return { data: summaryList }
+    // return Axios.get(USER_API.SIGNUP, { headers: { setBearerAuth: true } })
   },
 
   updateStrategy (userData) {
@@ -32,3 +34,41 @@ export const optimiserAPI = {
     return Axios.get(USER_API.LOGOUT, { headers: { setBearerAuth: true } })
   }
 }
+
+const summaryList = [{
+  strategyInput: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  forecastResults: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
+}, {
+  strategyInput: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  forecastResults: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
+}]

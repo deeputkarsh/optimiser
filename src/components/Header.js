@@ -1,8 +1,8 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DehazeIcon from '@material-ui/icons/Dehaze'
 import Menu from '@material-ui/core/Menu'
-// import MenuItem from '@material-ui/core/MenuItem'
+import MenuItem from '@material-ui/core/MenuItem'
 
 export const Header = ({ login }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -27,8 +27,8 @@ export const Header = ({ login }) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          {/* <MenuItem onClick={handleClose}><Link className='link' to={`${baseUrl}`}>Image Recognition Watson</Link></MenuItem>
-          <MenuItem onClick={handleClose}><Link className='link' to={`${baseUrl}speech`}>Speech To Text</Link></MenuItem> */}
+          <MenuItem onClick={handleClose}><Link className='link' to={`/create_strategy`}>Create Strategy</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link className='link' to={`/`}>Speech To Text</Link></MenuItem>
         </Menu>
       </div>
     </header>
