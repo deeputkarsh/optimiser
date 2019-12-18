@@ -1,34 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core'
 
 export default function (props) {
-  const { strategyConstraint, onInputChange } = props
+  const { strategyConstraints, addConstraint, onInputChange } = props
+  const [selectedTypes, setSelectedTypes] = useState([])
+  useEffect(() => {
+    const selected = strategyConstraints.filter(({ constraintType }) => !!constraintType).map(item => item.constraintType)
+    setSelectedTypes(selected)
+  }, [strategyConstraints])
+  const pushConstraint = _ => {
+    if (strategyConstraints.length < 3) { addConstraint(strategyConstraints) }
+  }
+  const onConstraintChange = (data, index) => {
+    const newList = [...strategyConstraints]
+    newList.splice(index, 1, data)
+    onInputChange({ strategyConstraints: newList })
+  }
+  const renderConstraints = _ => strategyConstraints.map((item, index) => (
+    <Constraint
+      key={`${index}-${item.type}`}
+      index={index}
+      {...item}
+      selectedTypes={selectedTypes}
+      pushConstraint={pushConstraint}
+      onConstraintChange={onConstraintChange}
+    />
+  ))
   return (
     <Grid container>
-      <Constraint />
+      {renderConstraints()}
     </Grid>
   )
 }
 
 const Constraint = props => {
-  const { strategyConstraint, onInputChange } = props
+  const CONSTRAINT_TYPES = [140, 10, 11]
+  const { constraintType, selectedTypes, index, constraintValue, pushConstraint, onConstraintChange } = props
+  const selectList = CONSTRAINT_TYPES.filter(item => !selectedTypes.includes(item))
+  if (constraintType) {
+    selectList.push(constraintType)
+  }
+
+  const onInputChange = ({ target: { value } }, fieldName) => {
+    if (constraintType === '' && value && fieldName === 'constraintType') {
+      pushConstraint()
+    }
+    onConstraintChange({ constraintType, constraintValue, [fieldName]: value }, index)
+  }
   return (
     <Grid container>
       <Grid item xs={6}>
         <FormControl variant='outlined' className='' style={{ width: '100%' }}>
-          <InputLabel id='demo-simple-select-outlined-label'>
-              Class
-          </InputLabel>
+          <InputLabel id='demo-simple-select-outlined-label'>Constraints</InputLabel>
           <Select
             labelId='demo-simple-select-outlined-label'
             id='demo-simple-select-outlined'
-            value={strategyClass}
-            onChange={e => onInputChange(e, 'strategyClass')}
-            labelWidth={24}
+            value={constraintType}
+            onChange={e => onInputChange(e, 'constraintType')}
           >
-            <MenuItem value={140}>140</MenuItem>
-            <MenuItem value={20}>10</MenuItem>
-            <MenuItem value={30}>11</MenuItem>
+            {selectList.map(item => {
+              return (<MenuItem key={item} value={item}>{item}</MenuItem>)
+            })}
           </Select>
         </FormControl>
       </Grid>
@@ -36,14 +68,15 @@ const Constraint = props => {
         <FormControl style={{ width: '100%' }}>
           <TextField
             name='strategy constraint'
-            label='Constraint'
+            label='Value'
             variant='outlined'
             type='text'
-            placeholder='Max Discount %'
+            placeholder={constraintType}
             className='{styles.loginInput}'
             required
-            value={strategyConstraint}
-            onChange={e => onInputChange(e, 'strategyConstraint')}
+            disabled={!constraintType}
+            value={constraintValue}
+            onChange={e => onInputChange(e, 'constraintValue')}
           />
         </FormControl>
       </Grid>
