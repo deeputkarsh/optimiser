@@ -8,7 +8,7 @@ export default props => {
   return (
     <Grid container justify='center' spacing={3}>
       <Grid item xs={12}>
-        <Paper className='not-found'>404 NOT FOUND</Paper>
+        <Paper className='not-found' />
       </Grid>
     </Grid>
   )

@@ -31,7 +31,8 @@ export const optimiserAPI = {
   },
 
   logout () {
-    return Axios.get(USER_API.LOGOUT, { headers: { setBearerAuth: true } })
+    return { data: { message: 'Logged Out Successfully' } }
+    // return Axios.get(USER_API.LOGOUT, { headers: { setBearerAuth: true } })
   }
 }
 

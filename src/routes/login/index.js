@@ -24,45 +24,43 @@ const Login = (props) => {
   const onPasswordEnter = event => (event.keyCode === 13) && props.login({ mobile, password })
 
   return (
-    <div className='login-inner-wrapper'>
-      <div className='login-content'>
-        <form className='login-form'>
-          <FormControl style={{ width: '100%' }}>
-            <TextField
-              name='mobile'
-              label='Mobile'
-              variant='outlined'
-              type='text'
-              placeholder='Mobile'
-              className='login-input'
-              required
-              value={mobile}
-              onChange={e => onInputChange(e, 'mobile')}
-            />
-          </FormControl>
-          <FormControl style={{ width: '100%' }}>
-            <TextField
-              name='password'
-              label='Password'
-              variant='outlined'
-              type='password'
-              placeholder='Password'
-              className='login-input'
-              required
-              value={password}
-              onChange={e => onInputChange(e, 'password')}
-              onKeyUp={onPasswordEnter}
-            />
-          </FormControl>
-        </form>
-        <Button
-          color='primary'
-          size='large'
-          variant='contained'
-          className='login-arrow'
-          onClick={onLoginClick}
-        > Login </Button>
-      </div>
+    <div className='login-content'>
+      <form className='login-form'>
+        <FormControl className='form-control'>
+          <TextField
+            name='mobile'
+            label='Mobile'
+            variant='outlined'
+            type='text'
+            placeholder='Mobile'
+            className='login-input'
+            required
+            value={mobile}
+            onChange={e => onInputChange(e, 'mobile')}
+          />
+        </FormControl>
+        <FormControl className='form-control'>
+          <TextField
+            name='password'
+            label='Password'
+            variant='outlined'
+            type='password'
+            placeholder='Password'
+            className='login-input'
+            required
+            value={password}
+            onChange={e => onInputChange(e, 'password')}
+            onKeyUp={onPasswordEnter}
+          />
+        </FormControl>
+      </form>
+      <Button
+        color='primary'
+        size='large'
+        variant='contained'
+        className='login-arrow'
+        onClick={onLoginClick}
+      > Login </Button>
     </div>
   )
 }

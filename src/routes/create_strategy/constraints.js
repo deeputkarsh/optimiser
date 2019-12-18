@@ -48,9 +48,9 @@ const Constraint = props => {
     onConstraintChange({ constraintType, constraintValue, [fieldName]: value }, index)
   }
   return (
-    <Grid container>
+    <Grid container justify='space-between' spacing={2}>
       <Grid item xs={6}>
-        <FormControl variant='outlined' className='' style={{ width: '100%' }}>
+        <FormControl variant='outlined' className='form-control'>
           <InputLabel id='demo-simple-select-outlined-label'>Constraints</InputLabel>
           <Select
             labelId='demo-simple-select-outlined-label'
@@ -65,7 +65,7 @@ const Constraint = props => {
         </FormControl>
       </Grid>
       <Grid item xs={6}>
-        <FormControl style={{ width: '100%' }}>
+        <FormControl className='form-control'>
           <TextField
             name='strategy constraint'
             label='Value'
