@@ -14,7 +14,7 @@ export default function (props) {
   }, [strategyConstraints])
   const onConstraintChange = (data, index, option) => {
     const newList = [...strategyConstraints]
-    const defaultObj = { constraintType: '', constraintValue: '' } 
+    const defaultObj = { constraintType: '', constraintValue: '' }
     console.log(option)
     if (option === 'pushConstraint' && strategyConstraints.length < 3) {
       newList.push(defaultObj)
@@ -44,9 +44,9 @@ export default function (props) {
 
 const Constraint = props => {
   const { constraintType, constraintTypeList, index, constraintValue, onConstraintChange } = props
-  
+
   const onInputChange = ({ target: { value } }, fieldName) => {
-    const option = (constraintType === '' && value && fieldName === 'constraintType') ? 'pushConstraint' : ''  
+    const option = (constraintType === '' && value && fieldName === 'constraintType') ? 'pushConstraint' : ''
     onConstraintChange({ constraintType, constraintValue, [fieldName]: value }, index, option)
   }
   return (
@@ -57,6 +57,7 @@ const Constraint = props => {
           <Select
             labelId='demo-simple-select-outlined-label'
             id='demo-simple-select-outlined'
+            labelWidth={72}
             value={constraintType}
             onChange={e => onInputChange(e, 'constraintType')}
           >

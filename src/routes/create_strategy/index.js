@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Paper,TextField, FormControl, Button, InputLabel, Select, MenuItem, Grid } from '@material-ui/core'
+import { Paper, TextField, FormControl, Button, InputLabel, Select, MenuItem, Grid } from '@material-ui/core'
 import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
 import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
 import Constraints from './constraints'
@@ -24,7 +24,7 @@ const CreateEditStrategy = (props) => {
   }
 
   return (
-    <Paper className='create-strategy' >
+    <Paper className='create-strategy'>
       <form className='strategy-form'>
         <Grid item xs={12}>
           <FormControl className='form-control'>
@@ -40,20 +40,21 @@ const CreateEditStrategy = (props) => {
             />
           </FormControl>
         </Grid>
-        <Grid item xs={6} >
+        <Grid item xs={6}>
           <FormControl variant='outlined' className='form-control'>
-          <InputLabel id='strategy-class-select-label'> Class </InputLabel>
-          <Select
-            labelId='strategy-class-select-label'
-            id='strategy-class-select'
-            value={strategyClass}
-            onChange={e => onInputChange(e, 'strategyClass')}
-          >
-            <MenuItem value={140}>140</MenuItem>
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={11}>11</MenuItem>
-          </Select>
-        </FormControl>
+            <InputLabel id='strategy-class-select-label'> Class </InputLabel>
+            <Select
+              labelId='strategy-class-select-label'
+              id='strategy-class-select'
+              labelWidth={37}
+              value={strategyClass}
+              onChange={e => onInputChange(e, 'strategyClass')}
+            >
+              <MenuItem value={140}>140</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={11}>11</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <StrategyCheckbox
           minimizeErosion={minimizeErosion}

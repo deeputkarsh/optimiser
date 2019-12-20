@@ -34,7 +34,7 @@ const Summary = props => {
         <Grid item xs={12} sm={6} lg={4}>
           <Link to='/create_strategy' className='add-summary-container'>
             <Paper className='summary-item add-summary'>
-            <div>Add Another</div><div>Strategy</div>
+              <div>Add Another</div><div>Strategy</div>
             </Paper>
           </Link>
         </Grid>

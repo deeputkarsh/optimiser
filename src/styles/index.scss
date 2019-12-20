@@ -51,7 +51,7 @@ html, body{
     }
 }
 .login-content{
-    width: 50%;
+    width: 25%;
     @include md{ width: 100%};
 }
 .create-strategy{
@@ -72,6 +72,8 @@ html, body{
     padding-right: 10px;
 }
 
+
+
 .summary-container{
     padding: 12px;
     width: 100%;
@@ -82,7 +84,7 @@ html, body{
     padding: 12px 24px;
 
     &.add-summary{
-        height: 556px;
+        height: 568px;
         @include flexCenter;
         flex-direction: column;
         text-decoration: none;
@@ -114,14 +116,18 @@ html, body{
         margin-bottom: $formMargin;
         width: 100%;
     }
-    .summary-header{
-        font-weight: 500;
-        background-color: #efefef;
+    .summary-header, .roll-up-header{
+        font-weight: 700;
+        background-color: #e3e3e3;
         padding-left: 10px;
         padding-right: 10px;
         margin-left: -10px;
         margin-right: -10px;
         width: calc(100% + 20px);
+    }
+    .roll-up-header{
+        font-weight:600;
+        background-color: #efefef;
     }
 }
 

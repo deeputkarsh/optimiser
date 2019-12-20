@@ -8,7 +8,7 @@ export default function ({ data }) {
       <Grid container className='summary-header'>
         <Grid item xs={12}>TV's - 4k- Holiday</Grid>
       </Grid>
-      <Grid container>
+      <Grid container className='roll-up-header'>
         <Grid item xs={2}>Class</Grid>
         <Grid item xs={3}>Class Description</Grid>
         <Grid item xs={1}>Avg OB %</Grid>

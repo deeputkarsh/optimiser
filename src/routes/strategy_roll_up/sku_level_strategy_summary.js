@@ -4,10 +4,7 @@ import { Grid } from '@material-ui/core'
 export default function ({ data }) {
   return (
     <Grid container>
-      <Grid container className='summary-header'>
-        <Grid item xs={12}>TV's - 4k- Holiday</Grid>
-      </Grid>
-      <Grid container>
+      <Grid container className='roll-up-header'>
         <Grid item xs={2}>SKU</Grid>
         <Grid item xs={3}>SKU Description</Grid>
         <Grid item xs={1}>Avg OB %</Grid>
