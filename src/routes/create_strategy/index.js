@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { TextField, FormControl, Button, InputLabel, Select, MenuItem } from '@material-ui/core'
-
+import { TextField, FormControl, Button, InputLabel, Select, MenuItem, Checkbox } from '@material-ui/core'
 import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
 import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
 import Constraints from './constraints'
@@ -20,6 +19,7 @@ const CreateEditStrategy = (props) => {
       return props.showError('Enter valid strategyName & strategyClass')
     }
     props.update({ strategyName, strategyClass, strategyWOS, strategyConstraints })
+    props.history.push('/summary')
   }
 
   return (
@@ -46,10 +46,34 @@ const CreateEditStrategy = (props) => {
             onChange={e => onInputChange(e, 'strategyClass')}
           >
             <MenuItem value={140}>140</MenuItem>
-            <MenuItem value={20}>10</MenuItem>
-            <MenuItem value={30}>11</MenuItem>
+            <MenuItem value={10}>10</MenuItem>
+            <MenuItem value={11}>11</MenuItem>
           </Select>
         </FormControl>
+        <InputLabel>Strategy : </InputLabel>
+        <InputLabel>Minimise Errosion
+          <Checkbox
+            defaultChecked
+            value='Minimise Errosion'
+            color='primary'
+            disabled
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+        </InputLabel>
+        <InputLabel>Clear Inventory
+          <Checkbox
+            value='Clear Inventory'
+            color='primary'
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+        </InputLabel>
+        <InputLabel>Clear Old Age Product First
+          <Checkbox
+            value='Clear Old Age Product First'
+            color='primary'
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+        </InputLabel>
         <FormControl className='form-control'>
           <TextField
             name='strategy name'
@@ -68,7 +92,7 @@ const CreateEditStrategy = (props) => {
           addConstraint={props.addConstraint}
         />
       </form>
-      <Button color='primary' size='large' variant='contained' onClick={onSaveClick}> Save </Button>
+      <Button color='primary' size='large' variant='contained' onClick={onSaveClick}> Submit </Button>
     </div>
   )
 }

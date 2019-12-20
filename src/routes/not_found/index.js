@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { Grid, Paper } from '@material-ui/core'
 
 import { getRouteChangeEffect } from '../../utils'
+import { AppAction } from '../../redux'
+import { connect } from 'react-redux'
 
-export default props => {
+const NotFound = props => {
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   return (
     <Grid container justify='center' spacing={3}>
@@ -13,3 +15,4 @@ export default props => {
     </Grid>
   )
 }
+export default connect(null, { onRouteChange: AppAction.onRouteChange })(NotFound)

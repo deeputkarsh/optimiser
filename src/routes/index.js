@@ -10,6 +10,7 @@ import Login from './login'
 import NotFound from './not_found'
 import CreateStrategy from './create_strategy'
 import Summary from './summary'
+import StrategyRollUpSummary from './strategy_roll_up'
 
 const App = (props) => {
   return (
@@ -22,6 +23,7 @@ const App = (props) => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/create_strategy' component={CreateStrategy} />
           <Route exact path='/summary' component={Summary} />
+          <Route exact path='/strategy_roll_up' component={StrategyRollUpSummary} />
           <Redirect to='/404' />
         </Switch>
         <Snackbar

@@ -7,36 +7,36 @@ import { LoginAction, AppAction, SnackbarAction } from '../../redux'
 import { getRouteChangeEffect } from '../../utils'
 
 const Login = (props) => {
-  useEffect(() => { isLoggedIn && props.history.push('/summary') })
+  useEffect(() => { isLoggedIn && props.history.push('/create_strategy') })
   useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
-  const { mobile, password, isLoggedIn } = props
+  const { username, password, isLoggedIn } = props
 
   const onInputChange = ({ target: { value } }, fieldName) => {
     props.onInputChange({ [fieldName]: value })
   }
 
   const onLoginClick = (event) => {
-    if (mobile.length <= 0 || password.length <= 0) {
+    if (username.length <= 0 || password.length <= 0) {
       return props.showError('Enter valid mobile & password')
     }
-    props.login({ mobile, password })
+    props.login({ username, password })
   }
-  const onPasswordEnter = event => (event.keyCode === 13) && props.login({ mobile, password })
+  const onPasswordEnter = event => (event.keyCode === 13) && props.login({ username, password })
 
   return (
     <div className='login-content'>
       <form className='login-form'>
         <FormControl className='form-control'>
           <TextField
-            name='mobile'
-            label='Mobile'
+            name='username'
+            label='User Name'
             variant='outlined'
             type='text'
-            placeholder='Mobile'
+            placeholder='User Name'
             className='login-input'
             required
-            value={mobile}
-            onChange={e => onInputChange(e, 'mobile')}
+            value={username}
+            onChange={e => onInputChange(e, 'username')}
           />
         </FormControl>
         <FormControl className='form-control'>
@@ -60,7 +60,8 @@ const Login = (props) => {
         variant='contained'
         className='login-arrow'
         onClick={onLoginClick}
-      > Login </Button>
+      >Login
+      </Button>
     </div>
   )
 }

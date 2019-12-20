@@ -3,9 +3,9 @@ import { SnackbarAction } from './snackbarActions'
 import { optimiserAPI } from '../services'
 import { AppAction } from './appActions'
 
-const defaultState = { mobile: '', password: '' }
-const login = ({ mobile, password }) => dispatch => {
-  const cred = window.btoa(`${mobile}:${password}`)
+const defaultState = { username: '', password: '' }
+const login = ({ username, password }) => dispatch => {
+  const cred = window.btoa(`${username}:${password}`)
   dispatch(fetchLogin(cred)).then(({ payload }) => {
     dispatch(AppAction.onLogin(payload.token))
     dispatch(SnackbarAction.show(payload.message))

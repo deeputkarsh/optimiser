@@ -58,12 +58,19 @@ html, body{
 }
 .summary-container{
     padding: 12px;
-    width: 75%;
+    width: 100%;
     line-height: 34px;
-    @include md{ width: 100%};
+    /* @include md{ width: 100%}; */
 }
 .summary-item{
     padding: 12px 24px 0px 24px;
+
+    &.add-summary{
+        height: 556px;
+        @include flexCenter;
+        text-decoration: none;
+        color: blue;
+    }
 }
 .main-wrapper {
     .form-control {
@@ -80,6 +87,7 @@ html, body{
         width: calc(100% + 20px);
     }
 }
+
 .not-found{
     width: 100%;
     height: 550px;

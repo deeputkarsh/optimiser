@@ -26,8 +26,14 @@ export const optimiserAPI = {
     // return Axios.get(USER_API.SIGNUP, { headers: { setBearerAuth: true } })
   },
 
+  getStrategyRollUpSummary () {
+    return { data: strategyRollUpSummaryList }
+    // return Axios.get(USER_API.SIGNUP, { headers: { setBearerAuth: true } })
+  },
+
   updateStrategy (userData) {
-    return Axios.post(USER_API.UPDATE_PROFILE, userData, { headers: { setBearerAuth: true } })
+    return { data: { message: 'Saved Successfully' } }
+    // return Axios.post(USER_API.UPDATE_PROFILE, userData, { headers: { setBearerAuth: true } })
   },
 
   logout () {
@@ -35,6 +41,33 @@ export const optimiserAPI = {
     // return Axios.get(USER_API.LOGOUT, { headers: { setBearerAuth: true } })
   }
 }
+
+const strategyRollUpSummaryList = [{
+  classLevelSummary: {
+    className: '140 - className',
+    classDesc: 'Samsung TV\'s',
+    avgOBDisc: 50,
+    erosion: 7769,
+    WOS: 10,
+    EOH: 7869,
+    EOHUnits: 324,
+    salesUnits: 8970,
+    COGS: 5575,
+    recoveryRate: 3897
+  },
+  skuLevelSummary: {
+    SKU: 786789,
+    SKUDesc: 'Samsung - 43" Class-LED',
+    avgOBDisc: 47,
+    erosion: 7769,
+    WOS: 10,
+    EOH: 7869,
+    EOHUnits: 324,
+    salesUnits: 8970,
+    COGS: 5575,
+    recoveryRate: 3897
+  }
+}]
 
 const summaryList = [{
   strategyInput: {
@@ -73,3 +106,41 @@ const summaryList = [{
     recoveryRate: 200
   }
 }]
+
+/* const strategyRollUpSummaryList = [{
+  classLevelSummary: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  skuLevelSummary: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
+}, {
+  classLevelSummary: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  skuLevelSummary: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
+}] */

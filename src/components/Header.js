@@ -18,7 +18,7 @@ const Component = ({ isLoggedIn, logout }) => {
 
   return (
     <header className='header-wrapper'>
-      <Link className='menu-link' to='/'><div className='logo-container' /></Link>
+      <Link className='menu-link' to='/create_strategy'><div className='logo-container' /></Link>
       <div className='menu-container'>
         {isLoggedIn && <DehazeIcon onClick={handleClick} />}
         <Menu
@@ -30,7 +30,8 @@ const Component = ({ isLoggedIn, logout }) => {
           className='menu-container'
         >
           <MenuItem onClick={handleClose}><Link className='menu-link' to='/create_strategy'>Create Strategy</Link></MenuItem>
-          <MenuItem onClick={handleClose}><Link className='menu-link' to='/'>Strategy Roll up</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link className='menu-link' to='/summary'>Optimisation Summary</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link className='menu-link' to='/strategy_roll_up'>Strategy Roll up</Link></MenuItem>
           <MenuItem onClick={logOut}>Log out</MenuItem>
         </Menu>
       </div>

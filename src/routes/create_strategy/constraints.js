@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core'
+import { Grid, FormControl, TextField, InputLabel, Select, MenuItem, Button } from '@material-ui/core'
 
 export default function (props) {
   const { strategyConstraints, addConstraint, onInputChange } = props
@@ -11,11 +11,15 @@ export default function (props) {
   const pushConstraint = _ => {
     if (strategyConstraints.length < 3) { addConstraint(strategyConstraints) }
   }
-  const onConstraintChange = (data, index) => {
+  const onConstraintChange = (data, index, clicktype) => {
     const newList = [...strategyConstraints]
-    newList.splice(index, 1, data)
+    if (clicktype === 'delete') {
+      newList.splice(index, 1)
+      if (newList.length < 1) { addConstraint(newList) }
+    } else { newList.splice(index, 1, data) }
     onInputChange({ strategyConstraints: newList })
   }
+
   const renderConstraints = _ => strategyConstraints.map((item, index) => (
     <Constraint
       key={`${index}-${item.type}`}
@@ -34,7 +38,7 @@ export default function (props) {
 }
 
 const Constraint = props => {
-  const CONSTRAINT_TYPES = [140, 10, 11]
+  const CONSTRAINT_TYPES = ['Max Discount %', 'Min Discount %', 'Step Change Discount %']
   const { constraintType, selectedTypes, index, constraintValue, pushConstraint, onConstraintChange } = props
   const selectList = CONSTRAINT_TYPES.filter(item => !selectedTypes.includes(item))
   if (constraintType) {
@@ -79,6 +83,7 @@ const Constraint = props => {
             onChange={e => onInputChange(e, 'constraintValue')}
           />
         </FormControl>
+        <Button color='primary' size='large' variant='contained' onClick={e => onConstraintChange(null, index, 'delete')}> Delete Constraint </Button>
       </Grid>
     </Grid>
   )

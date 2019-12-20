@@ -8,12 +8,14 @@ import snackbarStore from './snackbarActions'
 import loginStore from './loginActions'
 import strategyData from './strategyActions'
 import summaryList from './summaryActions'
+import strategyRollUpSummaryList from './strategyRollUpActions'
 
 const rootReducer = combineReducers({
   appStore,
   loginStore,
   strategyData,
   summaryList,
+  strategyRollUpSummaryList,
   snackbarStore
 })
 

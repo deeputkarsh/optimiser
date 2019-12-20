@@ -2,7 +2,7 @@ import { createActions, handleActions, combineActions } from 'redux-actions'
 import { SnackbarAction } from './snackbarActions'
 import { optimiserAPI } from '../services'
 
-const defaultState = { strategyName: '', strategyClass: '140', strategyWOS: '5', strategyConstraints: [{ constraintType: '', constraintValue: '' }] }
+const defaultState = { strategyName: '', strategyClass: 140, strategyWOS: 5, strategyConstraints: [{ constraintType: '', constraintValue: '' }] }
 
 const update = data => dispatch => {
   dispatch(updateStrategy(data)).then(({ payload }) => {
