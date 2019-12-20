@@ -4,6 +4,8 @@
 @import './mixins.scss';
 @import './variables.scss';
 
+$formMargin: 30px;
+
 * {
     box-sizing: border-box
 }
@@ -53,9 +55,23 @@ html, body{
     @include md{ width: 100%};
 }
 .create-strategy{
+    padding: 15px;
     width: 75%;
-    @include md{ width: 100%};
+    max-width: 600px;
+    @include md{
+        width: 100%;
+        max-width: unset;
+    };
 }
+.checkbox-container {
+    margin-bottom: $formMargin;
+    margin-left: -9px;
+}
+.contraint-value{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .summary-container{
     padding: 12px;
     width: 100%;
@@ -63,18 +79,39 @@ html, body{
     /* @include md{ width: 100%}; */
 }
 .summary-item{
-    padding: 12px 24px 0px 24px;
+    padding: 12px 24px;
 
     &.add-summary{
         height: 556px;
         @include flexCenter;
+        flex-direction: column;
         text-decoration: none;
-        color: blue;
+        color: #777;
+        background-color: #eee;
     }
 }
+.add-summary-container{
+    font-weight: 700;
+    font-size: 37px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 60px;
+}
 .main-wrapper {
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        line-height: 21px;
+    }
+    .delete-container{
+        cursor: pointer;
+        @include flexCenter;
+        margin-bottom: $formMargin;
+        border: 1px solid rgba(0, 0, 0, 0.26);
+        border-radius: 4px;
+    }
     .form-control {
-        margin-bottom: 16px;
+        margin-bottom: $formMargin;
         width: 100%;
     }
     .summary-header{

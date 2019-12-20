@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, FormControl, TextField, InputLabel, Select, MenuItem, Button } from '@material-ui/core'
+import { Grid, FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core'
+import Delete from '@material-ui/icons/Delete'
+
+const CONSTRAINT_TYPES = ['Max Discount %', 'Min Discount %', 'Step Change Discount %']
 
 export default function (props) {
-  const { strategyConstraints, addConstraint, onInputChange } = props
-  const [selectedTypes, setSelectedTypes] = useState([])
+  const { strategyConstraints, onInputChange } = props
+  const [constraintTypeList, setConstraintList] = useState([])
   useEffect(() => {
     const selected = strategyConstraints.filter(({ constraintType }) => !!constraintType).map(item => item.constraintType)
-    setSelectedTypes(selected)
+    const unSelectList = CONSTRAINT_TYPES.filter(item => !selected.includes(item))
+    setConstraintList(unSelectList)
   }, [strategyConstraints])
-  const pushConstraint = _ => {
-    if (strategyConstraints.length < 3) { addConstraint(strategyConstraints) }
-  }
-  const onConstraintChange = (data, index, clicktype) => {
+  const onConstraintChange = (data, index, option) => {
     const newList = [...strategyConstraints]
-    if (clicktype === 'delete') {
+    const defaultObj = { constraintType: '', constraintValue: '' } 
+    console.log(option)
+    if (option === 'pushConstraint' && strategyConstraints.length < 3) {
+      newList.push(defaultObj)
+    }
+    if (option === 'delete') {
       newList.splice(index, 1)
-      if (newList.length < 1) { addConstraint(newList) }
+      if (newList.length < 1) { newList.push(defaultObj) }
     } else { newList.splice(index, 1, data) }
     onInputChange({ strategyConstraints: newList })
   }
@@ -25,8 +31,7 @@ export default function (props) {
       key={`${index}-${item.type}`}
       index={index}
       {...item}
-      selectedTypes={selectedTypes}
-      pushConstraint={pushConstraint}
+      constraintTypeList={constraintTypeList}
       onConstraintChange={onConstraintChange}
     />
   ))
@@ -38,21 +43,14 @@ export default function (props) {
 }
 
 const Constraint = props => {
-  const CONSTRAINT_TYPES = ['Max Discount %', 'Min Discount %', 'Step Change Discount %']
-  const { constraintType, selectedTypes, index, constraintValue, pushConstraint, onConstraintChange } = props
-  const selectList = CONSTRAINT_TYPES.filter(item => !selectedTypes.includes(item))
-  if (constraintType) {
-    selectList.push(constraintType)
-  }
-
+  const { constraintType, constraintTypeList, index, constraintValue, onConstraintChange } = props
+  
   const onInputChange = ({ target: { value } }, fieldName) => {
-    if (constraintType === '' && value && fieldName === 'constraintType') {
-      pushConstraint()
-    }
-    onConstraintChange({ constraintType, constraintValue, [fieldName]: value }, index)
+    const option = (constraintType === '' && value && fieldName === 'constraintType') ? 'pushConstraint' : ''  
+    onConstraintChange({ constraintType, constraintValue, [fieldName]: value }, index, option)
   }
   return (
-    <Grid container justify='space-between' spacing={2}>
+    <Grid container>
       <Grid item xs={6}>
         <FormControl variant='outlined' className='form-control'>
           <InputLabel id='demo-simple-select-outlined-label'>Constraints</InputLabel>
@@ -62,13 +60,14 @@ const Constraint = props => {
             value={constraintType}
             onChange={e => onInputChange(e, 'constraintType')}
           >
-            {selectList.map(item => {
+            {constraintType && <MenuItem key={constraintType} value={constraintType}>{constraintType}</MenuItem>}
+            {constraintTypeList.map(item => {
               return (<MenuItem key={item} value={item}>{item}</MenuItem>)
             })}
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={5} className='contraint-value'>
         <FormControl className='form-control'>
           <TextField
             name='strategy constraint'
@@ -83,7 +82,9 @@ const Constraint = props => {
             onChange={e => onInputChange(e, 'constraintValue')}
           />
         </FormControl>
-        <Button color='primary' size='large' variant='contained' onClick={e => onConstraintChange(null, index, 'delete')}> Delete Constraint </Button>
+      </Grid>
+      <Grid item xs={1} className='delete-container' onClick={e => onConstraintChange(null, index, 'delete')}>
+        <Delete />
       </Grid>
     </Grid>
   )
