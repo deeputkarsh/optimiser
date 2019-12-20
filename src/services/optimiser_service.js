@@ -31,7 +31,27 @@ export const optimiserAPI = {
     // return Axios.get(USER_API.SIGNUP, { headers: { setBearerAuth: true } })
   },
 
-  updateStrategy (userData) {
+  updateStrategy (data) {
+    const newSummary = {
+      strategyInput: {
+        WOS: 8,
+        maxStep: 5,
+        maxDisc: 50,
+        minStep: 5,
+        minDisc: 5
+      },
+      forecastResults: {
+        WOS: 5,
+        erosion: 751549.67,
+        EOH: 27300769,
+        EOHUnits: 3,
+        avgOBDisc: 10,
+        salesUnits: 4,
+        COGS: 200,
+        recoveryRate: 200
+      }
+    }
+    summaryList.push(newSummary)
     return { data: { message: 'Saved Successfully' } }
     // return Axios.post(USER_API.UPDATE_PROFILE, userData, { headers: { setBearerAuth: true } })
   },
@@ -69,78 +89,4 @@ const strategyRollUpSummaryList = [{
   }
 }]
 
-const summaryList = [{
-  strategyInput: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  forecastResults: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}, {
-  strategyInput: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  forecastResults: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}]
-
-/* const strategyRollUpSummaryList = [{
-  classLevelSummary: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  skuLevelSummary: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}, {
-  classLevelSummary: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  skuLevelSummary: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}] */
+const summaryList = []

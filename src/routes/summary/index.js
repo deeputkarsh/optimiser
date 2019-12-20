@@ -32,9 +32,9 @@ const Summary = props => {
       <Grid container spacing={2} wrap='wrap'>
         <RenderSummaryItem summaryList={summaryList} />
         <Grid item xs={12} sm={6} lg={4}>
-          <Link to='/create_strategy' className='menu-link'>
+          <Link to='/create_strategy' className='add-summary-container'>
             <Paper className='summary-item add-summary'>
-            Add Another Strategy
+            <div>Add Another</div><div>Strategy</div>
             </Paper>
           </Link>
         </Grid>
