@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/optimiser/static/css/main.19c0351a.chunk.css",
+    "main.js": "/optimiser/static/js/main.a0f80b4a.chunk.js",
+    "main.js.map": "/optimiser/static/js/main.a0f80b4a.chunk.js.map",
+    "runtime-main.js": "/optimiser/static/js/runtime-main.27d3cbbc.js",
+    "runtime-main.js.map": "/optimiser/static/js/runtime-main.27d3cbbc.js.map",
+    "static/js/2.765abfc1.chunk.js": "/optimiser/static/js/2.765abfc1.chunk.js",
+    "static/js/2.765abfc1.chunk.js.map": "/optimiser/static/js/2.765abfc1.chunk.js.map",
+    "index.html": "/optimiser/index.html",
+    "precache-manifest.dad07a4e88a4e66a38ce1accb569702c.js": "/optimiser/precache-manifest.dad07a4e88a4e66a38ce1accb569702c.js",
+    "service-worker.js": "/optimiser/service-worker.js",
+    "static/css/main.19c0351a.chunk.css.map": "/optimiser/static/css/main.19c0351a.chunk.css.map",
+    "static/js/2.765abfc1.chunk.js.LICENSE": "/optimiser/static/js/2.765abfc1.chunk.js.LICENSE",
+    "static/media/index.scss": "/optimiser/static/media/404-Error.507c0ddc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.27d3cbbc.js",
+    "static/js/2.765abfc1.chunk.js",
+    "static/css/main.19c0351a.chunk.css",
+    "static/js/main.a0f80b4a.chunk.js"
+  ]
+}
