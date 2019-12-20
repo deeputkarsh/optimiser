@@ -14,7 +14,7 @@ import StrategyRollUpSummary from './strategy_roll_up'
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <div className='main-wrapper'>
         <Switch>
