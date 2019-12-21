@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { TextField, FormControl, Button } from '@material-ui/core'
+import { TextField, FormControl, Button, Paper, Grid } from '@material-ui/core'
 
 import { LoginAction, AppAction, SnackbarAction } from '../../redux'
 
@@ -24,7 +24,8 @@ const Login = (props) => {
   const onPasswordEnter = event => (event.keyCode === 13) && props.login({ username, password })
 
   return (
-    <div className='login-content'>
+    <Paper className='login-content'>
+      <Grid item xs={12} className='page-helper-text'>Enter your credentials</Grid>
       <form className='login-form'>
         <FormControl className='form-control'>
           <TextField
@@ -62,7 +63,7 @@ const Login = (props) => {
         onClick={onLoginClick}
       >Login
       </Button>
-    </div>
+    </Paper>
   )
 }
 
