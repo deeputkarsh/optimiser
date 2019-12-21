@@ -89,4 +89,22 @@ const strategyRollUpSummaryList = [{
   }
 }]
 
-const summaryList = []
+const summaryList = [{
+  strategyInput: {
+    WOS: 8,
+    maxStep: 5,
+    maxDisc: 50,
+    minStep: 5,
+    minDisc: 5
+  },
+  forecastResults: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 27300769,
+    EOHUnits: 3,
+    avgOBDisc: 10,
+    salesUnits: 4,
+    COGS: 200,
+    recoveryRate: 200
+  }
+}]

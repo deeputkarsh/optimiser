@@ -29,6 +29,13 @@ const Summary = props => {
   useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
     <div className='summary-container'>
+      <Grid container>
+        <Paper className='summary-details'>
+          <Grid item xs={12} className='page-helper-text'>Optimisation Summary</Grid>
+          <Grid item xs={3}><strong>Name :</strong> TV's - 4k- Holiday</Grid>
+          <Grid item xs={3}><strong>Class :</strong> 140 - className</Grid>
+        </Paper>
+      </Grid>
       <Grid container spacing={2} wrap='wrap'>
         <RenderSummaryItem summaryList={summaryList} />
         <Grid item xs={12} sm={6} lg={4}>

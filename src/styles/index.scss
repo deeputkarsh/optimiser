@@ -28,12 +28,17 @@ html, body{
     margin: 12px;
     @include flexCenter;
 }
-.header-wrapper{
+.header-wrapper {
     width: 100%;
     padding: 20px;
     background: #fff;
     display: flex;
     justify-content: space-between;
+}
+.summary-details{
+    width:100%;
+    padding: 16px;
+    margin-bottom: 15px;
 }
 .logo-container{
     background: url('../assets/logo.jpg') no-repeat;
@@ -54,11 +59,14 @@ html, body{
         color: inherit
     }
 }
-.page-helper-text {
+.page-helper-text{
     font-weight: 600;
     font-size: 20px;
     color: #777;
     padding-bottom: 20px;
+        &.roll-up-strategy{
+            padding-bottom: 0px;
+        }
 }
 .login-content{
     width: 40%;
@@ -67,6 +75,7 @@ html, body{
     @include md{ width: 80% };
     @include sm{ width: 100% }
 }
+
 .create-strategy{
     padding: 15px;
     width: 75%;
@@ -84,9 +93,6 @@ html, body{
     padding-left: 10px;
     padding-right: 10px;
 }
-
-
-
 .summary-container{
     padding: 12px;
     width: 100%;

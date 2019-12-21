@@ -27,6 +27,11 @@ const StrategyRollUpSummary = props => {
   useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
     <div className='summary-container'>
+      <Grid container>
+        <Paper className='summary-details'>
+          <Grid item xs={12} className='page-helper-text roll-up-strategy'>Strategy Roll Up</Grid>
+        </Paper>
+      </Grid>
       <Grid container spacing={2} wrap='wrap'>
         <RenderSummaryItem strategyRollUpSummaryList={strategyRollUpSummaryList} />
       </Grid>
