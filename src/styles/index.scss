@@ -38,8 +38,9 @@ html, body{
     background: url('../assets/logo.jpg') no-repeat;
     /* width: 92px;
     height: 46px; */
-    width: 160px;
-    height: 125px;
+    width: 90px;
+    height: 50px;
+    background-size: contain;
     display: block;
 }
 .menu-container{
