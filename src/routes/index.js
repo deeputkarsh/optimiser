@@ -13,10 +13,16 @@ import Summary from './summary'
 import StrategyRollUpSummary from './strategy_roll_up'
 
 const App = (props) => {
+  const { currentRoute } = props
+  let routClasss = currentRoute.replace(/\//, '_')
+  if (!currentRoute && window) {
+    routClasss = window.location.pathname.replace(/\//, '_')
+  }
+  routClasss = routClasss.replace(/^_/, '')
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
-      <div className='main-wrapper'>
+      <div className={`main-wrapper ${routClasss}`}>
         <Switch>
           <Route exact path='/' component={Login} />
           <Route exact path='/404' component={NotFound} />
@@ -42,11 +48,10 @@ const App = (props) => {
   )
 }
 
-function mapStateToProps ({ snackbarStore }) {
-  return {
-    snackbarStatus: snackbarStore.open || false,
-    snackbarText: snackbarStore.data || ''
-  }
-}
+const mapStateToProps = ({ snackbarStore: { open, data }, appStore: { route } }) => ({
+  currentRoute: route,
+  snackbarStatus: open || false,
+  snackbarText: data || ''
+})
 
 export default connect(mapStateToProps, { handleSnackbarClose: SnackbarAction.hide })(App)

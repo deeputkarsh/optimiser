@@ -25,6 +25,7 @@ const CreateEditStrategy = (props) => {
 
   return (
     <Paper className='create-strategy'>
+      <Grid item xs={12} className='page-helper-text'>Create a Strategy</Grid>
       <form className='strategy-form'>
         <Grid item xs={12}>
           <FormControl className='form-control'>
