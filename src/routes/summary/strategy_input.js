@@ -8,23 +8,19 @@ export default function ({ data }) {
         <Grid item xs={8}>Strategy Input</Grid>
         <Grid item xs={4}>Value</Grid>
       </Grid>
-      <Grid container >
+      <Grid container>
         <Grid item xs={8}>Weeks Of Supply</Grid>
         <Grid item xs={4}>{data.WOS}</Grid>
       </Grid>
-      <Grid container >
-        <Grid item xs={8}>Max Step</Grid>
-        <Grid item xs={4}>{data.maxStep}</Grid>
+      <Grid container>
+        <Grid item xs={8}>Step Discount</Grid>
+        <Grid item xs={4}>{data.stepDisc}</Grid>
       </Grid>
-      <Grid container >
-        <Grid item xs={8}>Min Step</Grid>
-        <Grid item xs={4}>{data.minStep}</Grid>
-      </Grid>
-      <Grid container >
+      <Grid container>
         <Grid item xs={8}>Max Discount</Grid>
-        <Grid item xs={4}>{data.minDisc}</Grid>
+        <Grid item xs={4}>{data.maxDisc}</Grid>
       </Grid>
-      <Grid container >
+      <Grid container>
         <Grid item xs={8}>Min Discount</Grid>
         <Grid item xs={4}>{data.minDisc}</Grid>
       </Grid>

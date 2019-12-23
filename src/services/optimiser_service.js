@@ -35,20 +35,19 @@ export const optimiserAPI = {
     const newSummary = {
       strategyInput: {
         WOS: 8,
-        maxStep: 5,
-        maxDisc: 50,
-        minStep: 5,
-        minDisc: 5
+        maxDisc: '50%',
+        stepDisc: '5%',
+        minDisc: '5%'
       },
       forecastResults: {
         WOS: 5,
         erosion: 751549.67,
-        EOH: 27300769,
+        EOH: 273007.98,
         EOHUnits: 3,
-        avgOBDisc: 10,
-        salesUnits: 4,
-        COGS: 200,
-        recoveryRate: 200
+        avgOBDisc: '10%',
+        salesUnits: 6754,
+        COGS: 5738389.5,
+        recoveryRate: 0.72
       }
     }
     summaryList.push(newSummary)
@@ -66,45 +65,27 @@ const strategyRollUpSummaryList = [{
   classLevelSummary: {
     className: '140 - className',
     classDesc: 'Samsung TV\'s',
-    avgOBDisc: 50,
-    erosion: 7769,
+    avgOBDisc: '50%',
+    erosion: 1075395.51,
     WOS: 10,
-    EOH: 7869,
+    EOH: 28897705.1,
     EOHUnits: 324,
-    salesUnits: 8970,
-    COGS: 5575,
-    recoveryRate: 3897
+    salesUnits: 6218,
+    COGS: 5780894.5,
+    recoveryRate: 0.82
   },
   skuLevelSummary: {
     SKU: 786789,
     SKUDesc: 'Samsung - 43" Class-LED',
-    avgOBDisc: 47,
-    erosion: 7769,
-    WOS: 10,
-    EOH: 7869,
+    avgOBDisc: '40%',
+    erosion: 751549.6,
+    WOS: 7,
+    EOH: 273007.7,
     EOHUnits: 324,
     salesUnits: 8970,
-    COGS: 5575,
-    recoveryRate: 3897
+    COGS: 4699407.9,
+    recoveryRate: 0.8270
   }
 }]
 
-const summaryList = [{
-  strategyInput: {
-    WOS: 8,
-    maxStep: 5,
-    maxDisc: 50,
-    minStep: 5,
-    minDisc: 5
-  },
-  forecastResults: {
-    WOS: 5,
-    erosion: 751549.67,
-    EOH: 27300769,
-    EOHUnits: 3,
-    avgOBDisc: 10,
-    salesUnits: 4,
-    COGS: 200,
-    recoveryRate: 200
-  }
-}]
+const summaryList = []
