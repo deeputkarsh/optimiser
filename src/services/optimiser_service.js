@@ -74,7 +74,7 @@ const strategyRollUpSummaryList = [{
     COGS: 5780894.5,
     recoveryRate: 0.82
   },
-  skuLevelSummary: {
+  skuLevelSummary: [{
     SKU: 786789,
     SKUDesc: 'Samsung - 43" Class-LED',
     avgOBDisc: '40%',
@@ -85,7 +85,18 @@ const strategyRollUpSummaryList = [{
     salesUnits: 8970,
     COGS: 4699407.9,
     recoveryRate: 0.8270
-  }
+  }, {
+    SKU: 786789,
+    SKUDesc: 'Samsung - 43" Class-LED',
+    avgOBDisc: '40%',
+    erosion: 751549.6,
+    WOS: 7,
+    EOH: 273007.7,
+    EOHUnits: 324,
+    salesUnits: 8970,
+    COGS: 4699407.9,
+    recoveryRate: 0.8270
+  }]
 }]
 
 const summaryList = []
