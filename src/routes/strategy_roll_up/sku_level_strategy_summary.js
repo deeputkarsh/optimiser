@@ -15,17 +15,19 @@ export default function ({ data }) {
         <Grid item xs={1}>COGS</Grid>
         <Grid item xs={1}>Recovery Rate</Grid>
       </Grid>
-      <Grid container>
-        <Grid item xs={2}>{data.SKU}</Grid>
-        <Grid item xs={3}>{data.SKUDesc}</Grid>
-        <Grid item xs={1}>{data.avgOBDisc}</Grid>
-        <Grid item xs={1}>{data.erosion}</Grid>
-        <Grid item xs={1}>{data.WOS}</Grid>
-        <Grid item xs={1}>{data.EOHUnits}</Grid>
-        <Grid item xs={1}>{data.salesUnits}</Grid>
-        <Grid item xs={1}>{data.COGS}</Grid>
-        <Grid item xs={1}>{data.recoveryRate}</Grid>
-      </Grid>
+      {data.map((item, index) => (
+        <Grid key={index} container>
+          <Grid item xs={2}>{item.SKU}</Grid>
+          <Grid item xs={3}>{item.SKUDesc}</Grid>
+          <Grid item xs={1}>{item.avgOBDisc}</Grid>
+          <Grid item xs={1}>{item.erosion}</Grid>
+          <Grid item xs={1}>{item.WOS}</Grid>
+          <Grid item xs={1}>{item.EOHUnits}</Grid>
+          <Grid item xs={1}>{item.salesUnits}</Grid>
+          <Grid item xs={1}>{item.COGS}</Grid>
+          <Grid item xs={1}>{item.recoveryRate}</Grid>
+        </Grid>
+      ))}
     </Grid>
   )
 }
