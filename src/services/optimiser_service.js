@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { CONTRAINT_KEYS } from '../constants'
 
 const USER_END_POINT = process.env.LOGIN_API_ENDPOINT + '/user'
 const USER_API = {
@@ -32,23 +33,40 @@ export const optimiserAPI = {
   },
 
   updateStrategy (data) {
+    const {
+      minimizeErosion,
+      clearInventory,
+      clearOldAgeProductFirst,
+      strategyName,
+      strategyClass,
+      strategyWOS,
+      strategyConstraints
+    } = data
+    const constraints = {}
+    strategyConstraints.forEach(item => {
+      if (item.constraintType) {
+        constraints[CONTRAINT_KEYS[item.constraintType]] = item.constraintValue + '%'
+      }
+    })
     const newSummary = {
+      strategyName,
+      strategyClass,
+      minimizeErosion,
+      clearInventory,
+      clearOldAgeProductFirst,
       strategyInput: {
-        strategyName: 'Strategy001',
-        WOS: 8,
-        maxDisc: '50%',
-        stepDisc: '5%',
-        minDisc: '5%'
+        WOS: strategyWOS,
+        ...constraints
       },
       forecastResults: {
-        WOS: 5,
-        erosion: 751549.67,
-        EOH: 273007.98,
-        EOHUnits: 3,
-        avgOBDisc: '10%',
-        salesUnits: 6754,
-        COGS: 5738389.5,
-        recoveryRate: 0.72
+        WOS: generateRandomValues(1, 0),
+        erosion: generateRandomValues(6, 2),
+        EOH: generateRandomValues(6, 2),
+        EOHUnits: generateRandomValues(1, 0),
+        avgOBDisc: generateRandomValues(1, 0),
+        salesUnits: generateRandomValues(4, 0),
+        COGS: generateRandomValues(7, 1),
+        recoveryRate: generateRandomValues(0, 2)
       }
     }
     summaryList.push(newSummary)
@@ -97,8 +115,7 @@ const strategyRollUpSummaryList = [{
     salesUnits: 8953,
     COGS: 3599407.3,
     recoveryRate: 0.4270
-  },
-  {
+  }, {
     SKU: 786791,
     SKUDesc: 'Samsung - 40" Class-LED',
     avgOBDisc: '30%',
@@ -113,8 +130,12 @@ const strategyRollUpSummaryList = [{
 }]
 
 const summaryList = [{
+  strategyName: 'Strategy001',
+  strategyClass: '',
+  minimizeErosion: true,
+  clearInventory: false,
+  clearOldAgeProductFirst: false,
   strategyInput: {
-    strategyName: 'Strategy001',
     WOS: 8,
     maxDisc: '50%',
     stepDisc: '5%',
@@ -125,9 +146,13 @@ const summaryList = [{
     erosion: 751549.67,
     EOH: 273007.98,
     EOHUnits: 3,
-    avgOBDisc: '10%',
+    avgOBDisc: 10,
     salesUnits: 6754,
     COGS: 5738389.5,
     recoveryRate: 0.72
   }
 }]
+
+const generateRandomValues = (digits, precison) => {
+  return Math.round(Math.random() * Math.pow(10, digits + precison)) / Math.pow(10, precison)
+}

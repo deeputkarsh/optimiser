@@ -1,11 +1,11 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-export default function ({ data }) {
+export default function ({ data, strategyName }) {
   return (
     <Grid container>
       <Grid container className='summary-header'>
-        <Grid item xs={12}>{data.strategyName}</Grid>
+        <Grid item xs={12}>{strategyName}</Grid>
       </Grid>
       <Grid container className='summary-header'>
         <Grid item xs={8}>Strategy Input</Grid>

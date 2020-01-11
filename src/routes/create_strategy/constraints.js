@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core'
 import Delete from '@material-ui/icons/Delete'
-
-const CONSTRAINT_TYPES = ['Max Discount %', 'Min Discount %', 'Step Change Discount %']
+import { CONSTRAINT_TYPES } from '../../constants'
 
 export default function (props) {
   const { strategyConstraints, onInputChange } = props
