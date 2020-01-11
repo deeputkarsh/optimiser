@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-/* import { Link } from 'react-router-dom' */
-/* import { Grid, Paper } from '@material-ui/core' */
-import { summaryAction, AppAction } from '../../redux'
-import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
+import React from 'react'
+import { Grid, Paper } from '@material-ui/core'
 import { Bar } from 'react-chartjs-2'
 
 const chartList = [
@@ -18,17 +14,18 @@ const chartList = [
 ]
 
 const getChartDataSet = (summaryList, chartItem) => {
+  const labels = summaryList.map(summary => summary.strategyName)
   return {
-    labels: ['WOS'],
+    labels,
     datasets: [
       {
-        label: 'My First dataset',
-        backgroundColor: 'rgba(255,99,132,0.2)',
+        label: chartItem.label,
+        backgroundColor: chartItem.backgroundColor || 'rgba(255,99,132,0.2)',
         borderColor: 'rgba(255,99,132,1)',
         borderWidth: 1,
         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
         hoverBorderColor: 'rgba(255,99,132,1)',
-        data: [65, 59, 80, 81, 56, 55, 40]
+        data: summaryList.map(summary => summary.forecastResults[chartItem.key])
       }
     ]
   }
@@ -36,26 +33,22 @@ const getChartDataSet = (summaryList, chartItem) => {
 
 const StrategyVisualization = props => {
   const { summaryList } = props
-  // useEffect(getLogoutEffect(history, isLoggedIn), [isLoggedIn])
-  // useEffect(() => { isLoggedIn && getSummary() }, [isLoggedIn, getSummary])
-  // useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
     <div>
-      <h2>Bar Example (custom size)</h2>
-      <Bar
-        data={getChartDataSet()}
-        width={100}
-        height={50}
-        options={{
-          maintainAspectRatio: false
-        }}
-      />
+      <h2>Strategy Visual Comparisions</h2>
+      <Grid container spacing={2}>
+        {chartList.map(item => (
+          <Grid key={item.key} item xs={4}>
+            <Paper>
+              <Bar
+                data={getChartDataSet(summaryList, item)}
+              />
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   )
 }
-
-// const mapStateToProps = ({ summaryList, appStore: { isLoggedIn } }) => ({ summaryList, isLoggedIn })
-
-// export default connect(mapStateToProps, { ...summaryAction, onRouteChange: AppAction.onRouteChange })(StrategyVisualization)
 
 export default StrategyVisualization

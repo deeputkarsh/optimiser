@@ -13,7 +13,7 @@ const RenderSummaryItem = ({ summaryList }) => {
     return (
       <Grid key={index} item xs={12} sm={6} lg={4}>
         <Paper className='summary-item'>
-          <StrategyInput data={item.strategyInput} />
+          <StrategyInput strategyName={item.strategyName} data={item.strategyInput} />
           <ForcastResults data={item.forecastResults} />
           <span className='input-group-btn'>
             <Link to='/strategy_roll_up'>See more detail</Link>
