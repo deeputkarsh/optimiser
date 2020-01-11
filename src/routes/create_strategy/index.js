@@ -69,8 +69,9 @@ const CreateEditStrategy = (props) => {
               name='strategy name'
               label='Class Weeks Of Supply'
               variant='outlined'
-              type='text'
+              // type='text'
               placeholder='Weeks Of Supply'
+              type='number'
               required
               value={strategyWOS}
               onChange={e => onInputChange(e, 'strategyWOS')}

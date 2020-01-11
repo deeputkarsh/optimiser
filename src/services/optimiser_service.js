@@ -34,6 +34,7 @@ export const optimiserAPI = {
   updateStrategy (data) {
     const newSummary = {
       strategyInput: {
+        strategyName: 'Strategy001',
         WOS: 8,
         maxDisc: '50%',
         stepDisc: '5%',
@@ -82,21 +83,51 @@ const strategyRollUpSummaryList = [{
     WOS: 7,
     EOH: 273007.7,
     EOHUnits: 324,
-    salesUnits: 8970,
-    COGS: 4699407.9,
-    recoveryRate: 0.8270
+    salesUnits: 3450,
+    COGS: 4699407.4,
+    recoveryRate: 0.8250
   }, {
-    SKU: 786789,
-    SKUDesc: 'Samsung - 43" Class-LED',
-    avgOBDisc: '40%',
-    erosion: 751549.6,
-    WOS: 7,
-    EOH: 273007.7,
-    EOHUnits: 324,
-    salesUnits: 8970,
-    COGS: 4699407.9,
-    recoveryRate: 0.8270
+    SKU: 786790,
+    SKUDesc: 'Samsung - 42" Class-LED',
+    avgOBDisc: '50%',
+    erosion: 341549.4,
+    WOS: 6,
+    EOH: 273117.7,
+    EOHUnits: 315,
+    salesUnits: 8953,
+    COGS: 3599407.3,
+    recoveryRate: 0.4270
+  },
+  {
+    SKU: 786791,
+    SKUDesc: 'Samsung - 40" Class-LED',
+    avgOBDisc: '30%',
+    erosion: 851549.5,
+    WOS: 8,
+    EOH: 272317.7,
+    EOHUnits: 310,
+    salesUnits: 7868,
+    COGS: 2344407.9,
+    recoveryRate: 0.5420
   }]
 }]
 
-const summaryList = []
+const summaryList = [{
+  strategyInput: {
+    strategyName: 'Strategy001',
+    WOS: 8,
+    maxDisc: '50%',
+    stepDisc: '5%',
+    minDisc: '5%'
+  },
+  forecastResults: {
+    WOS: 5,
+    erosion: 751549.67,
+    EOH: 273007.98,
+    EOHUnits: 3,
+    avgOBDisc: '10%',
+    salesUnits: 6754,
+    COGS: 5738389.5,
+    recoveryRate: 0.72
+  }
+}]

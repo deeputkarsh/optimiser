@@ -6,6 +6,7 @@ import { summaryAction, AppAction } from '../../redux'
 import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
 import StrategyInput from './strategy_input'
 import ForcastResults from './forcast_results'
+import StrategyVisualization from '../strategy_visualization'
 
 const RenderSummaryItem = ({ summaryList }) => {
   return summaryList.map((item, index) => {
@@ -46,6 +47,7 @@ const Summary = props => {
           </Link>
         </Grid>
       </Grid>
+      <StrategyVisualization summaryList={summaryList} />
     </div>
   )
 }

@@ -5,6 +5,9 @@ export default function ({ data }) {
   return (
     <Grid container>
       <Grid container className='summary-header'>
+        <Grid item xs={12}>{data.strategyName}</Grid>
+      </Grid>
+      <Grid container className='summary-header'>
         <Grid item xs={8}>Strategy Input</Grid>
         <Grid item xs={4}>Value</Grid>
       </Grid>

@@ -74,7 +74,8 @@ const Constraint = props => {
             name='strategy constraint'
             label='Value'
             variant='outlined'
-            type='text'
+            // type='text'
+            type='number'
             placeholder={constraintType}
             className='{styles.loginInput}'
             required
