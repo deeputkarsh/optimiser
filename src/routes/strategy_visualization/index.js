@@ -38,7 +38,7 @@ const StrategyVisualization = props => {
       <h2>Strategy Visual Comparisions</h2>
       <Grid container spacing={2}>
         {chartList.map(item => (
-          <Grid key={item.key} item xs={4}>
+          <Grid key={item.key} item xs={12} sm={6} lg={4}>
             <Paper>
               <Bar
                 data={getChartDataSet(summaryList, item)}

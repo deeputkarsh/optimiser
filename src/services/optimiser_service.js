@@ -59,14 +59,14 @@ export const optimiserAPI = {
         ...constraints
       },
       forecastResults: {
-        WOS: 5,
-        erosion: 751549.67,
-        EOH: 273007.98,
-        EOHUnits: 3,
-        avgOBDisc: 10,
-        salesUnits: 6754,
-        COGS: 5738389.5,
-        recoveryRate: 0.72
+        WOS: generateRandomValues(1, 0),
+        erosion: generateRandomValues(6, 2),
+        EOH: generateRandomValues(6, 2),
+        EOHUnits: generateRandomValues(1, 0),
+        avgOBDisc: generateRandomValues(1, 0),
+        salesUnits: generateRandomValues(4, 0),
+        COGS: generateRandomValues(7, 1),
+        recoveryRate: generateRandomValues(0, 2)
       }
     }
     summaryList.push(newSummary)
@@ -152,3 +152,7 @@ const summaryList = [{
     recoveryRate: 0.72
   }
 }]
+
+const generateRandomValues = (digits, precison) => {
+  return Math.round(Math.random() * Math.pow(10, digits + precison)) / Math.pow(10, precison)
+}
