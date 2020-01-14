@@ -1,7 +1,7 @@
 import { createActions, handleActions, combineActions } from 'redux-actions'
 import { Auth } from '../utils'
 
-const defaultState = { route: '', isLoggedIn: Auth.isLoggedIn() }
+const defaultState = { route: '/create_strategy', isLoggedIn: Auth.isLoggedIn() }
 
 const { onLogin, onLogout, onRouteChange } = createActions({
   ON_ROUTE_CHANGE: route => { return { route: route } },

@@ -34,7 +34,7 @@ const StrategyVisualization = props => {
   const { summaryList } = props
   return (
     <div>
-      <h2>Strategy Visual Comparisions</h2>
+      <h2>Strategy Visual Comparisons</h2>
       <Grid container spacing={2}>
         {chartList.map(item => (
           <Grid key={item.key} item xs={12} sm={6} lg={4}>
