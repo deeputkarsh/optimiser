@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Paper, TextField, FormControl, Button, InputLabel, Select, MenuItem, Grid } from '@material-ui/core'
-import { CreateStrategyAction, AppAction, SnackbarAction } from '../../redux'
-import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
+import { CreateStrategyAction, SnackbarAction } from '../../redux'
+import { getLogoutEffect } from '../../utils'
 import Constraints from './constraints'
 import StrategyCheckbox from './strategy_checkbox'
 
 const CreateEditStrategy = (props) => {
   const { strategyName, strategyClass, strategyWOS, strategyConstraints, minimizeErosion, clearInventory, clearOldAgeProductFirst, isLoggedIn } = props
   useEffect(getLogoutEffect(props.history, isLoggedIn), [isLoggedIn])
-  useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
 
   const onInputChange = ({ target: { value } }, fieldName) => {
     props.onInputChange({ [fieldName]: value })
@@ -92,7 +91,6 @@ const mapStateToProps = ({ strategyData, appStore: { isLoggedIn } }) => ({ ...st
 
 const mapdispatchtoprops = {
   ...CreateStrategyAction,
-  showError: SnackbarAction.show,
-  onRouteChange: AppAction.onRouteChange
+  showError: SnackbarAction.show
 }
 export default connect(mapStateToProps, mapdispatchtoprops)(CreateEditStrategy)

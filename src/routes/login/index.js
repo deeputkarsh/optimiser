@@ -2,13 +2,10 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { TextField, FormControl, Button, Paper, Grid } from '@material-ui/core'
 
-import { LoginAction, AppAction, SnackbarAction } from '../../redux'
-
-import { getRouteChangeEffect } from '../../utils'
+import { LoginAction, SnackbarAction } from '../../redux'
 
 const Login = (props) => {
   useEffect(() => { isLoggedIn && props.history.push('/create_strategy') })
-  useEffect(getRouteChangeEffect(props.history, props.onRouteChange))
   const { username, password, isLoggedIn } = props
 
   const onInputChange = ({ target: { value } }, fieldName) => {
@@ -73,7 +70,6 @@ const { onInputChange, login } = LoginAction
 const mapdispatchtoprops = {
   login,
   onInputChange,
-  showError: SnackbarAction.show,
-  onRouteChange: AppAction.onRouteChange
+  showError: SnackbarAction.show
 }
 export default connect(mapStateToProps, mapdispatchtoprops)(Login)

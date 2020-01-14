@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Grid, Paper } from '@material-ui/core'
-import { summaryAction, AppAction } from '../../redux'
-import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
+import { summaryAction } from '../../redux'
+import { getLogoutEffect } from '../../utils'
 import StrategyInput from './strategy_input'
 import ForcastResults from './forcast_results'
 import StrategyVisualization from '../strategy_visualization'
@@ -24,10 +24,9 @@ const RenderSummaryItem = ({ summaryList }) => {
   })
 }
 const Summary = props => {
-  const { summaryList, isLoggedIn, history, getSummary, onRouteChange } = props
+  const { summaryList, isLoggedIn, history, getSummary } = props
   useEffect(getLogoutEffect(history, isLoggedIn), [isLoggedIn])
   useEffect(() => { isLoggedIn && getSummary() }, [isLoggedIn, getSummary])
-  useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
     <div className='summary-container'>
       <Grid container>
@@ -54,4 +53,4 @@ const Summary = props => {
 
 const mapStateToProps = ({ summaryList, appStore: { isLoggedIn } }) => ({ summaryList, isLoggedIn })
 
-export default connect(mapStateToProps, { ...summaryAction, onRouteChange: AppAction.onRouteChange })(Summary)
+export default connect(mapStateToProps, { ...summaryAction })(Summary)

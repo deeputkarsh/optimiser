@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Paper } from '@material-ui/core'
-import { strategySummaryRollUpAction, AppAction } from '../../redux'
-import { getRouteChangeEffect, getLogoutEffect } from '../../utils'
-// import StrategyInput from './strategy_input'
-// import ForcastResults from './forcast_results'
+import { strategySummaryRollUpAction } from '../../redux'
+import { getLogoutEffect } from '../../utils'
 import SkuLevelStrategySummary from './sku_level_strategy_summary'
 import ClassLevelStrategySummary from './class_level_strategy_summary'
 
@@ -21,10 +19,9 @@ const RenderSummaryItem = ({ strategyRollUpSummaryList }) => {
   })
 }
 const StrategyRollUpSummary = props => {
-  const { strategyRollUpSummaryList, isLoggedIn, history, getSkuLevelSummary, onRouteChange } = props
+  const { strategyRollUpSummaryList, isLoggedIn, history, getSkuLevelSummary } = props
   useEffect(getLogoutEffect(history, isLoggedIn), [isLoggedIn])
   useEffect(() => { isLoggedIn && getSkuLevelSummary() }, [isLoggedIn, getSkuLevelSummary])
-  useEffect(getRouteChangeEffect(history, onRouteChange))
   return (
     <div className='summary-container'>
       <Grid container>
@@ -41,4 +38,4 @@ const StrategyRollUpSummary = props => {
 
 const mapStateToProps = ({ strategyRollUpSummaryList, appStore: { isLoggedIn } }) => ({ strategyRollUpSummaryList, isLoggedIn })
 
-export default connect(mapStateToProps, { ...strategySummaryRollUpAction, onRouteChange: AppAction.onRouteChange })(StrategyRollUpSummary)
+export default connect(mapStateToProps, { ...strategySummaryRollUpAction })(StrategyRollUpSummary)

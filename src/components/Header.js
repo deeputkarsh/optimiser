@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import { LoginAction } from '../redux'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 
-const Component = ({ isLoggedIn, route, logout }) => {
-  // const getClickHandler = item => event => { window.location.pathname = item.route }
+const Component = props => {
+  const { isLoggedIn, location, logout } = props
 
   const navItems = [{
     label: 'Create Strategy',
@@ -21,18 +22,15 @@ const Component = ({ isLoggedIn, route, logout }) => {
     route: '/strategy_roll_up'
   }]
 
-  let activeIndex = navItems.findIndex(item => item.route === route)
-  if (activeIndex === -1 || !isLoggedIn) {
-    activeIndex = 0
-  }
+  const invalidRoute = !navItems.find(item => item.route === location.pathname)
 
   return (
     <header className='header-wrapper'>
       <Link className='menu-link' to='/create_strategy'><div className='logo-container' /></Link>
       <div className='menu-container'>
-        {isLoggedIn &&
+        {!invalidRoute && isLoggedIn &&
           <Tabs
-            value={route}
+            value={location.pathname}
             indicatorColor='primary'
             textColor='primary'
           >
@@ -44,6 +42,6 @@ const Component = ({ isLoggedIn, route, logout }) => {
   )
 }
 
-const mapStateToProps = ({ appStore: { isLoggedIn, route } }) => ({ isLoggedIn, route })
+const mapStateToProps = ({ appStore: { isLoggedIn } }) => ({ isLoggedIn })
 const { logout } = LoginAction
-export const Header = connect(mapStateToProps, { logout })(Component)
+export const Header = withRouter(connect(mapStateToProps, { logout })(Component))
